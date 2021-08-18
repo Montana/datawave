@@ -12,3 +12,4 @@ install:
 
 script:
   - mvn -Dsurefire.forkCount=4 -Pdev verify
+  - uname r
