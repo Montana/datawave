@@ -1,4 +1,4 @@
-dist: precise
+dist: trusty
 # language: minimal - Montana Mendy 
 language: java
 jdk:
