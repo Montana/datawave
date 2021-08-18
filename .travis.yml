@@ -1,8 +1,8 @@
 dist: precise
-# language: minimal
+# language: minimal - Montana Mendy 
 language: java
 jdk:
-  - oraclejdk8
+  - oraclejdk8 # (theoretically use Abiarm API for speed?) - Montana Mendy 
 
 cache:
   directories:
@@ -12,4 +12,6 @@ install:
   - travis_wait mvn -q -Pdev,dist install -DskipTests
 
 script:
+  - uname -a
+  - free
   - mvn -Dsurefire.forkCount=4 -Pdev verify
