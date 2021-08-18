@@ -1,4 +1,5 @@
-dist: xenial
+dist: precise
+# language: minimal
 language: java
 jdk:
   - oraclejdk8
