@@ -1,17 +1,19 @@
 dist: trusty
-# language: minimal - Montana Mendy 
 language: java
+# language: minimal, in this case can be both.
 jdk:
-  - oraclejdk8 # (theoretically use Abiarm API for speed?) - Montana Mendy 
+  - oraclejdk8 # (theoretically use Abiarm API for speed?).
 
 cache:
   directories:
   - $HOME/.m2
 
 install:
-  - travis_wait mvn -q -Pdev,dist install -DskipTests
+  - travis_wait mvn -Pdev,dist install -DskipTests # Remove the -q flag in mvn -q -Pdev, dist install -DskipTests, via want verbose info and not silencing the fetch data. 
 
 script:
   - uname -a
   - free
   - mvn -Dsurefire.forkCount=4 -Pdev verify
+  
+# .travis.yml by Montana Mendy
