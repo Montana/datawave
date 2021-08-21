@@ -1,14 +1,24 @@
 ---
 dist: trusty
+sudo: true
 
 # language: minimal, in this case it can be both, (either/or).
 
 language: java
 
-# (theoretically you can use Abiarm API for speed).
+# (Theoretically you can use Abiarm API for speed).
 
-jdk:
-  - oraclejdk8
+jdk: oraclejdk9
+
+addons:
+  apt:
+    packages:
+      - oracle-java9-installer
+      
+ # Permission adding. 
+      
+before_install:
+  - chmod +x mvnw
 
 cache:
   directories:
