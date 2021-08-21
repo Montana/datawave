@@ -5,13 +5,22 @@ sudo: true
 # Setting `language: minimal`, in this case it can be both, (either/or).
 
 language: java
-  if: commit_message !~ /\[.*?\]/ AND type != cron
+  
+# My tips for NSA's Datawave Travis optimization. 
+ 
+# You can add an `if statement` if you need to add Cron jobs to your build, I've added how this would look below.
+  
+# if: "(commit_message =~ /\\[delete env\\]/ OR commit_message =~ /\\[recreate env\\]/) AND type != cron"
+
+# Restart the `travis-scheduler` for fresh tokens on every build/trigger.  
+
+# if: "((branch IN (master, develop) && type = push) OR branch =~ /.*env.*/ OR commit_message =~ /\\[recreate env\\]/) AND commit_message !~ /\\[delete env\\]/ AND type != cron AND commit_message !~ /\\[execute .*. test\\]/ AND commit_message !~ /\\[start ecreate scheduler\\]/"
 
 # (Theoretically you can use Abiarm API for speed).
 
 jdk: oraclejdk8
 
-# Since Gradle 4.10, cache cleaning happens by stopping the running daemon (if any).
+# Since Gradle 4.10, cache cleaning happens by stopping the running daemon (if any). (Although Maven is used, Gradle is still an option, and to save time I've implemented this in the build instructoins).
 
 before_install:  
 - echo 'Searching for the gradle executable and stopping the daemons'
