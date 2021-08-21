@@ -5,8 +5,6 @@ sudo: true
 # Setting `language: minimal`, in this case it can be both, (either/or).
 
 language: java
-  stages:
-- name: NSA's Datawave Travis Improvements
   if: commit_message !~ /\[.*?\]/ AND type != cron
 
 # (Theoretically you can use Abiarm API for speed).
