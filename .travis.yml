@@ -14,7 +14,8 @@ language: java
 
 # Restart the `travis-scheduler` for fresh tokens on every build/trigger.  
 
-# if: "((branch IN (master, develop) && type = push) OR branch =~ /.*env.*/ OR commit_message =~ /\\[recreate env\\]/) AND commit_message !~ /\\[delete env\\]/ AND type != cron AND commit_message !~ /\\[execute .*. test\\]/ AND commit_message !~ /\\[start ecreate scheduler\\]/"
+# if: "((branch IN (master, develop) && type = push) OR branch =~ /.*env.*/ OR commit_message =~ /\\[recreate env\\]/) AND commit_message !~ /\\[delete env\\]/ AND type != cron AND commit_message !~ /\\[execute .*. test\\]/ AND commit_message !~ /\\[start ecreate scheduler\\]/" if: commit_message !~ /\[.*?\]/ OR commit_message =~ /\[execute APPS test\]/ OR
+      commit_message =~ /\[execute test\]/
 
 # (Theoretically you can use Abiarm API for speed).
 
