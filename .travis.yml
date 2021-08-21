@@ -2,7 +2,7 @@
 dist: trusty
 sudo: true
 
-# language: minimal, in this case it can be both, (either/or).
+# Setting `language: minimal`, in this case it can be both, (either/or).
 
 language: java
 
@@ -16,9 +16,6 @@ addons:
       - oracle-java9-installer
       
  # Permission adding. 
-      
-before_install:
-  - chmod +x mvnw
 
 cache:
   directories:
