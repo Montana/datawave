@@ -1,19 +1,27 @@
+---
 dist: trusty
+
+# language: minimal, in this case it can be both, (either/or).
+
 language: java
-# language: minimal, in this case can be both.
+
+# (theoretically you can use Abiarm API for speed).
+
 jdk:
-  - oraclejdk8 # (theoretically use Abiarm API for speed?).
+  - oraclejdk8
 
 cache:
   directories:
   - $HOME/.m2
 
+ # Remove the -q flag in mvn -q -Pdev, dist install -DskipTests, via I want verbose info and not silencing the fetch data. 
+
 install:
-  - travis_wait mvn -Pdev,dist install -DskipTests # Remove the -q flag in mvn -q -Pdev, dist install -DskipTests, via want verbose info and not silencing the fetch data. 
+  - travis_wait mvn -Pdev,dist install -DskipTests
+
+# Add `free` and `uname -a` for more info on the provisional setup, may add `uname -r` for just more information on the provisional setup. 
 
 script:
   - uname -a
   - free
   - mvn -Dsurefire.forkCount=4 -Pdev verify
-  
-# .travis.yml by Montana Mendy
